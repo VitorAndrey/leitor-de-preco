@@ -2,21 +2,21 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import axios from 'axios'
-import { db } from '../database/index'
-import { products } from '../database/schemas/product'
-import { eq } from 'drizzle-orm'
+import { registerIpcEvents } from './src/ipc-events'
+
+registerIpcEvents(ipcMain)
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 890,
+    height: 530,
     show: false,
     icon,
-    frame: false,
     resizable: false,
-    fullscreen: true,
+    frame: true,
+    // frame: false,
+    // fullscreen: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -80,42 +80,3 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
-ipcMain.handle('speak', async (_, text) => {
-  const key = 'AIzaSyBTfoVWuEQNb5cukjKVIIZ7gm8JpT7aNrY'
-  const endpoint = `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${key}`
-
-  const payload = {
-    audioConfig: {
-      audioEncoding: 'MP3',
-      effectsProfileId: ['small-bluetooth-speaker-class-device'],
-      pitch: -3.5,
-      speakingRate: 1.05
-    },
-    input: {
-      text
-    },
-    voice: {
-      languageCode: 'pt-BR',
-      name: 'pt-BR-Standard-B'
-    }
-  }
-
-  const { data } = await axios.post(endpoint, payload)
-  return data
-})
-
-ipcMain.handle('find-product-by-id', async (_, id) => {
-  const data = db.select().from(products).where(eq(products.id, id)).get()
-
-  return data
-})
-
-ipcMain.handle('create-product', async (_, product) => {
-  const data = db.insert(products).values(product)
-
-  return data
-})
-
-ipcMain.on('log', async (_, text) => {
-  console.log(text)
-})
