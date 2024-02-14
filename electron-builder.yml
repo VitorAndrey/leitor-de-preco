@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: Leito de preço
+productName: leitor-de-preco
 directories:
   buildResources: build
 files:
@@ -12,9 +12,9 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: Leito de preço
+  executableName: leitor-de-preco
 nsis:
-  artifactName: ${name}-setup.${ext}
+  artifactName: ${name}.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
@@ -27,7 +27,7 @@ mac:
     - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
   notarize: false
 dmg:
-  artifactName: ${name}-setup.${ext}
+  artifactName: ${name}.${ext}
 linux:
   target:
     - target: AppImage
