@@ -11,17 +11,28 @@ export function Carrousel() {
       id: '1',
       name: 'Macarrao',
       price: 3.99,
-      image: 'https://github.com/a.png'
+      image: 'https://github.com/f.png'
+    },
+    {
+      id: '2',
+      name: 'Feijao',
+      price: 3.99,
+      image: 'https://github.com/d.png'
+    },
+    {
+      id: '3',
+      name: 'Batata',
+      price: 3.99,
+      image: 'https://github.com/e.png'
     }
   ]
 
   return (
     <Swiper
       modules={[Autoplay]}
-      spaceBetween={50}
       slidesPerView={1}
       autoplay={{
-        delay: 5000,
+        delay: 8000,
         disableOnInteraction: false
       }}
       loop
