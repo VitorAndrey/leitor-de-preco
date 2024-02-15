@@ -1,10 +1,5 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
-
-type ProductType = {
-  id: string
-  name: string
-  price: number
-}
+import { ProductType } from 'src/types'
 
 declare global {
   interface Window {

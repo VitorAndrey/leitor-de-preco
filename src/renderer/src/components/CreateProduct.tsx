@@ -1,5 +1,5 @@
-import { ProductType } from '@renderer/App'
 import { FormEvent, useRef, useState } from 'react'
+import { ProductType } from 'src/types'
 
 export function CreateProduct() {
   const [productIdInput, setProductIdInput] = useState('')

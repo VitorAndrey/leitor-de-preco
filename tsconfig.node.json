@@ -5,6 +5,7 @@
     "src/preload/*",
     "src/database/**/*",
     "src/main/**/*",
+    "src/types/**/*",
   ],
   "compilerOptions": {
     "composite": true,

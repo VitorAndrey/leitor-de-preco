@@ -26,7 +26,8 @@
     "axios": "^1.6.7",
     "better-sqlite3": "^9.4.0",
     "drizzle-kit": "^0.20.14",
-    "drizzle-orm": "^0.29.3"
+    "drizzle-orm": "^0.29.3",
+    "swiper": "^11.0.6"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
