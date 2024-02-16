@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { registerIpcEvents } from './src/ipc-events'
+import { betterSqlite } from '../database'
 
 registerIpcEvents(ipcMain)
 
@@ -74,6 +75,7 @@ app.whenReady().then(() => {
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
+    betterSqlite.close()
     app.quit()
   }
 })

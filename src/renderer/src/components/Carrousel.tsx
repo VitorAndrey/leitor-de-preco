@@ -32,7 +32,7 @@ export function Carrousel() {
       modules={[Autoplay]}
       slidesPerView={1}
       autoplay={{
-        delay: 8000,
+        delay: 4000,
         disableOnInteraction: false
       }}
       loop

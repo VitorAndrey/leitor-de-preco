@@ -36,46 +36,48 @@ export function CreateProduct() {
   }
 
   return (
-    <form
-      id="create-product"
-      ref={formRef}
-      onSubmit={handleCreateProduct}
-      className="flex flex-col gap-2 border w-80 h-64 p-4 rounded-lg"
-    >
-      <h3>Criar Produto</h3>
+    <div className="h-screen w-screen flex items-center justify-center">
+      <form
+        id="create-product"
+        ref={formRef}
+        onSubmit={handleCreateProduct}
+        className="flex flex-col gap-2 border w-80 h-64 p-4 rounded-lg"
+      >
+        <h3>Criar Produto</h3>
 
-      <div className="flex-1 flex flex-col justify-evenly">
-        <input
-          required
-          placeholder="Nome do produto"
-          className="border px-4 py-2 rounded-lg"
-          type="text"
-          value={productNameInput}
-          onChange={(e) => setProductNameInput(e.target.value)}
-        />
-        <input
-          required
-          placeholder="Preço do produto"
-          className="border px-4 py-2 rounded-lg"
-          type="number"
-          step={0.01}
-          min={0}
-          value={productPriceInput}
-          onChange={(e) => setProductPriceInput(e.target.value)}
-        />
-        <input
-          required
-          placeholder="Código do produto"
-          className="border px-4 py-2 rounded-lg"
-          type="text"
-          value={productIdInput}
-          onChange={(e) => setProductIdInput(e.target.value)}
-        />
-      </div>
+        <div className="flex-1 flex flex-col justify-evenly">
+          <input
+            required
+            placeholder="Nome do produto"
+            className="border px-4 py-2 rounded-lg"
+            type="text"
+            value={productNameInput}
+            onChange={(e) => setProductNameInput(e.target.value)}
+          />
+          <input
+            required
+            placeholder="Preço do produto"
+            className="border px-4 py-2 rounded-lg"
+            type="number"
+            step={0.01}
+            min={0}
+            value={productPriceInput}
+            onChange={(e) => setProductPriceInput(e.target.value)}
+          />
+          <input
+            required
+            placeholder="Código do produto"
+            className="border px-4 py-2 rounded-lg"
+            type="text"
+            value={productIdInput}
+            onChange={(e) => setProductIdInput(e.target.value)}
+          />
+        </div>
 
-      <button disabled={isLoading} className="border px-4 py-2 rounded-lg" type="submit">
-        {isLoading ? <span className="animate-pulse">Carregando</span> : <span>Criar</span>}
-      </button>
-    </form>
+        <button disabled={isLoading} className="border px-4 py-2 rounded-lg" type="submit">
+          {isLoading ? <span className="animate-pulse">Carregando</span> : <span>Criar</span>}
+        </button>
+      </form>
+    </div>
   )
 }
