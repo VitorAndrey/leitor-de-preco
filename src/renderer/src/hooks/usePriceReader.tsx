@@ -1,26 +1,12 @@
-import { useState, createContext, ReactNode } from 'react'
-import { ProductType } from 'src/types'
+import { useState } from 'react'
 
-type PriceReaderContextProps = {
-  product: ProductType | null
-  isLoading: boolean
-  handleFindProductById: (id: string) => Promise<void>
-}
+export function usePriceReader() {
+  const [product, setProduct] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
-export const PriceReaderReaderContext = createContext({} as PriceReaderContextProps)
+  let currentAudio: HTMLAudioElement | null = null
 
-let currentAudio: HTMLAudioElement | null = null
-
-export function PriceReaderProvider({ children }: { children: ReactNode }) {
-  const [product, setProduct] = useState<ProductType | null>({
-    id: '1',
-    image: 'https://github.com/Alex.png',
-    name: 'Azulin Limpeza Profunda',
-    price: 5.99
-  })
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-
-  async function handleFindProductById(id: string) {
+  async function handleFindProductById(id) {
     setIsLoading(true)
 
     try {
@@ -42,7 +28,7 @@ export function PriceReaderProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  async function handleSpeak(text: string): Promise<void> {
+  async function handleSpeak(text: string) {
     const { audioContent } = await window.api.speak(text)
 
     if (currentAudio) {
@@ -74,9 +60,9 @@ export function PriceReaderProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  return (
-    <PriceReaderReaderContext.Provider value={{ product, isLoading, handleFindProductById }}>
-      {children}
-    </PriceReaderReaderContext.Provider>
-  )
+  return {
+    product,
+    isLoading,
+    handleFindProductById
+  }
 }

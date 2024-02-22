@@ -2,30 +2,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 
 import 'swiper/css'
-import { PromotionSlide } from './PromotionSlide'
-import { ProductType } from 'src/types'
+import { CarrouselItem } from './CarrouselItem'
 
 export function Carrousel() {
-  const promotions: ProductType[] = [
-    {
-      id: '1',
-      name: 'Macarrao',
-      price: 3.99,
-      image: 'https://github.com/f.png'
-    },
-    {
-      id: '2',
-      name: 'Feijao',
-      price: 3.99,
-      image: 'https://github.com/d.png'
-    },
-    {
-      id: '3',
-      name: 'Batata',
-      price: 3.99,
-      image: 'https://github.com/e.png'
-    }
-  ]
+  const promotionImagePaths: string[] = ['../assets/azulim.png', '../assets/josildo.png']
 
   return (
     <Swiper
@@ -37,9 +17,9 @@ export function Carrousel() {
       }}
       loop
     >
-      {promotions.map((product) => (
-        <SwiperSlide key={product.id}>
-          <PromotionSlide product={product} />
+      {promotionImagePaths.map((imagePath) => (
+        <SwiperSlide key={imagePath}>
+          <CarrouselItem imagePath={imagePath} />
         </SwiperSlide>
       ))}
     </Swiper>
