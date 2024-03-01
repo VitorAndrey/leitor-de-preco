@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Digital';
+  src: url('../assets/fonts/DS-DIGIT.TTF') format('truetype');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,4 +10,8 @@
 body {
   user-select: none;
   overflow: hidden;
+}
+
+.digital {
+  font-family: 'Digital', sans-serif;
 }

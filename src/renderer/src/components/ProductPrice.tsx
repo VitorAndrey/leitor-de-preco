@@ -1,5 +1,5 @@
 import { ProductType } from 'src/types'
-import image from '../assets/azulim.png'
+import image from '../assets/images/azulim.png'
 import { AnimatedCounter } from 'react-animated-counter'
 
 type ProductProps = {
@@ -8,11 +8,15 @@ type ProductProps = {
 
 export function Product({ product }: ProductProps) {
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center">
-      <h3 className="text-3xl">{product.name}</h3>
-      <img src={image} className="h-3/5 rounded-3xl" />
-      <div className="text-3xl">
-        <AnimatedCounter value={product.price} color="black" fontSize="35px" />
+    <div className="h-screen w-screen flex gap-4 bg-red-300 flex-col items-center justify-center">
+      <h3 className="text-4xl uppercase font-semibold">Azulim Multiuso</h3>
+      <img src={image} className="h-3/6 rounded-3xl" />
+
+      <div className="flex items-center text-3xl gap-2">
+        <div className="digital flex items-center gap-3">
+          <span className="text-5xl">R$</span>
+          <AnimatedCounter value={4.99} color="black" fontSize="72px" />
+        </div>
       </div>
     </div>
   )

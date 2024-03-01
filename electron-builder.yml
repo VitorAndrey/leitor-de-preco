@@ -12,6 +12,8 @@ files:
 asarUnpack:
   - resources/**
 win:
+  target:
+    - target: portable
   executableName: leitor-de-preco
 nsis:
   artifactName: ${name}.${ext}

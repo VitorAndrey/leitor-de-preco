@@ -8,7 +8,9 @@ const api = {
   products: {
     findById: (id) => ipcRenderer.invoke('find-product-by-id', id),
     create: (pruduct) => ipcRenderer.invoke('create-product', pruduct)
-  }
+  },
+
+  getEnv: (variable: string) => ipcRenderer.invoke('get-env', variable)
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

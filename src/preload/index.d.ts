@@ -15,4 +15,6 @@ interface Api {
     findById: (id: string) => ReturnType<typeof ipcRenderer.invoke>
     create: (product: ProductType) => ReturnType<typeof ipcRenderer.invoke>
   }
+
+  getEnv: (variable: string) => ReturnType<typeof ipcRenderer.invoke>
 }

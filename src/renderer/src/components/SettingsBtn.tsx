@@ -1,4 +1,4 @@
-import josildoLogo from '../assets/josildo.png'
+import josildoLogo from '../assets/images/josildo.png'
 
 type Props = {
   onToggleSettings: () => void

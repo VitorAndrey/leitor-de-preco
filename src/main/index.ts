@@ -7,6 +7,10 @@ import { betterSqlite } from '../database'
 
 registerIpcEvents(ipcMain)
 
+const key = 'AIzaSyBTfoVWuEQNb5cukjKVIIZ7gm8JpT7aNrY'
+
+app.commandLine.appendSwitch('enable-features', 'WebSpeechAPI')
+
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -49,6 +53,8 @@ function createWindow(): void {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Set app user model id for windows
+  process.env.GOOGLE_API_KEY = key
+
   electronApp.setAppUserModelId('com.electron')
 
   // Default open or close DevTools by F12 in development
